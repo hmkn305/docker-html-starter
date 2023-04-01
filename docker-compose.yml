@@ -1,10 +1,11 @@
 version: '3'
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    container_name: app
+    build: ./nginx
+    # ホストの8080番ポートをkoコンテナの80番ポートにマッピングする
     ports:
       - "8080:80"
+    # ホストとコンテナのディレクトリのマウントを指定
     volumes:
-      - ./src:/usr/share/nginx/html
+      - ./nginx/src:/usr/share/nginx/html
